@@ -33,7 +33,13 @@ export const addDaysInput = (days) => {
   return toInputDate(d);
 };
 
-export const imageUrl = (src) => src || '';
+export const imageUrl = (src) => {
+  if (!src) return '';
+  if (/^https?:\/\//i.test(src)) return src;
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const origin = apiUrl.replace(/\/api\/?$/, '');
+  return src.startsWith('/') ? `${origin}${src}` : src;
+};
 
 export const amenityList = (value) => {
   if (Array.isArray(value)) return value.filter(Boolean);
