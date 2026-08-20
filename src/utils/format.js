@@ -35,7 +35,7 @@ export const addDaysInput = (days) => {
 
 export const imageUrl = (src) => {
   if (!src) return '';
-  if (/^https?:\/\//i.test(src)) return src;
+  if (/^(https?:\/\/|data:)/i.test(src)) return src;
   const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
   const origin = apiUrl.replace(/\/api\/?$/, '');
   return src.startsWith('/') ? `${origin}${src}` : src;

@@ -42,7 +42,5 @@ export const adminUser = (id) => api.get(`/admin/users/${id}`).then((r) => r.dat
 export const adminUpload = (files) => {
   const form = new FormData();
   [...files].forEach((file) => form.append('images', file));
-  return api.post('/admin/upload', form, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  }).then((r) => r.data);
+  return api.post('/admin/upload', form).then((r) => r.data);
 };

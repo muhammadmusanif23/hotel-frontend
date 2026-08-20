@@ -7,7 +7,7 @@ import {
   adminUpdateHotel,
   adminUpload,
 } from '../../services/hotelApi';
-import { amenityList } from '../../utils/format';
+import { amenityList, imageUrl } from '../../utils/format';
 
 const empty = {
   name: '',
@@ -124,7 +124,7 @@ export default function HotelForm() {
         </label>
         <div className="flex flex-wrap gap-2">
           {form.images.map((src) => (
-            <img key={src} src={src} alt="" className="h-16 w-20 rounded-lg object-cover" />
+            <img key={src} src={imageUrl(src)} alt="" className="h-16 w-20 rounded-lg object-cover" />
           ))}
         </div>
         <label className="flex items-center gap-2 text-sm">
